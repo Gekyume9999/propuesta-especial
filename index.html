@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Stefanie</title>
+    <style>
+        body {
+            background-color: #fce4ec;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
 
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 400px;
+            z-index: 10;
+        }
+
+        h1 { color: #d81b60; font-size: 24px; }
+        p { color: #555; line-height: 1.6; }
+
+        .btn-container {
+            margin-top: 20px;
+            position: relative;
+            height: 50px;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 18px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #btnSi { background-color: #4caf50; color: white; }
+        #btnNo { 
+            background-color: #f44336; 
+            color: white; 
+            position: absolute;
+        }
+
+        .musica-control {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Lo siento de todo corazón...</h1>
+        <p>Sé que cometí errores y me arrepiento sinceramente de no haber estado a la altura. Esta vez es diferente, porque mi intención de cuidarte y hacerte feliz no fallará.</p>
+        <p><strong>¿Me darías la oportunidad de ser tu novio otra vez?</strong></p>
+        
+        <div class="btn-container">
+            <button id="btnSi">SÍ</button>
+            <button id="btnNo">NO</button>
+        </div>
+
+        <div class="musica-control">
+            (Haz clic en cualquier parte para que suene nuestra canción)
+        </div>
+    </div>
+
+    <audio id="musica" loop>
+        <source src="TU_ENLACE_DE_MUSICA_AQUI.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const btnNo = document.getElementById('btnNo');
+        const btnSi = document.getElementById('btnSi');
+        const musica = document.getElementById('musica');
+
+        // Función para que el botón "NO" escape
+        btnNo.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - btnNo.clientWidth);
+            const y = Math.random() * (window.innerHeight - btnNo.clientHeight);
+            btnNo.style.left = x + 'px';
+            btnNo.style.top = y + 'px';
+        });
+
+        // Reproducir música al primer clic en la pantalla
+        document.body.addEventListener('click', () => {
+            musica.play();
+        }, { once: true });
+
+        btnSi.addEventListener('click', () => {
+            alert('Prometo que esta vez será increíble. Te amo.');
+            window.location.href = "https://wa.me/TU_NUMERO_DE_TELEFONO"; // Opcional: Redirige a tu WhatsApp
+        });
+    </script>
+</body>
+</html>
